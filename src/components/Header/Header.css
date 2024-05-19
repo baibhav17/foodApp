@@ -1,0 +1,30 @@
+/* ----------+++++++++++++++ using tailwaind css thus, commenting below css ----------+++++++++++++++ */
+
+
+/* .header-container {
+    display: flex;
+    justify-content: space-between;
+    background: linear-gradient(to bottom right, rgb(89, 87, 87),rgb(184, 79, 79));
+} */
+
+/* .logo-img {
+    height: 100px;
+    width: 150px;
+}
+
+.nav-items-container > ul {
+    display: flex;
+    margin-right: 24px;
+
+    li {
+        margin: 10px;
+        padding: 10px;
+        list-style: none;
+        font-size: 18px;
+        font-family: monospace;
+        a {
+            text-decoration: none;
+            color: black;
+        }
+    }
+} */

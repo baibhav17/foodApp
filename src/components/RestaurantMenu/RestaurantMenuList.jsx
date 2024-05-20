@@ -72,7 +72,7 @@ const [count, increment, decrement] = useAddToCardCounter();
     return(
         <div>
           {listItems && listItems.map((item,index)=>(
-          <div key={item.card.info.id+index} className=" m-4 p-2 border-gray-200 border-b-2 text-left flex justify-between">
+          <div data-testid='list-item' key={item.card.info.id+index} className=" m-4 p-2 border-gray-200 border-b-2 text-left flex justify-between">
             <div className=" m-1 p-2 w-10/12">
                 <div>
                 <span>{item?.card?.info?.name}</span>

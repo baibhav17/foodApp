@@ -56,12 +56,15 @@ const [count, increment, decrement] = useAddToCardCounter();
     const handleRemoveItem = (item) => {
         itemId = item.card.info.id;
         const indexToRemove = listItems.findIndex(i => i.card.info.id === item.card.info.id);
-        if(resInfo.length !== 0 || resInfo[0] == resId) {
-            // since we just need to remove so instead of passing the whole item let's just pass the index
-            dispatch(removeItem(indexToRemove))
-            dispatch(getResInfo(resId))
-            dispatch(decrementCount({itemId}));
-        } 
+        if (itemCount[itemId] > 0) {
+            if(resInfo.length !== 0 || resInfo[0] == resId) {
+                // since we just need to remove so instead of passing the whole item let's just pass the index
+                dispatch(removeItem(indexToRemove))
+                dispatch(getResInfo(resId))
+                dispatch(decrementCount({itemId}));
+            } 
+        }
+        
 
     }
     return(

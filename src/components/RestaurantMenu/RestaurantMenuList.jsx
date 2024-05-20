@@ -21,7 +21,9 @@ const [count, increment, decrement] = useAddToCardCounter();
     const handleAddItem = (item) => {
         // increment();
         itemId = item.card.info.id
-        dispatch(increaseCount({itemId}));
+        if(Object.keys(itemCount).length == 0 || resInfo[0] == resId) {
+            dispatch(increaseCount({itemId}));
+        }
         // if(resInfo.length === 0) {
             if(resInfo.length === 0 || resInfo[0] == resId) {
                 dispatch(addItems(item))
@@ -29,7 +31,6 @@ const [count, increment, decrement] = useAddToCardCounter();
             } 
             else if ( resInfo.length !== 0 && resInfo[0] !== resId) {
                 const userOption = window.confirm('this will remove the current items from the cart');
-
                  // case 1: if useroption is true
                 //      - then clear --> the store cart items and also clear --> the current restInfo(resId).
                 //      - and following clearing now add the new item into the cart and add this new rest info using getRestInfo(resId)
@@ -39,9 +40,10 @@ const [count, increment, decrement] = useAddToCardCounter();
                     dispatch(clearItemCount())
                     dispatch(addItems(item))
                     dispatch(getResInfo(resId))
-                    // dispatch(increaseCount({itemId}));
+                    dispatch(increaseCount({itemId}));
 
                 } else {
+                    return;
                 // case 2: if useroption is false
                 //      - do not clear any cart item or resInfo slice.
                 //      - also do not add any value in cart or resinfo slice

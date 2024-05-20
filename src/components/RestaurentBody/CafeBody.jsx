@@ -28,7 +28,6 @@ export const CafeBody = () => {
             throw new Error('No response from server');
         }
         const jsonData = await data.json();
-        console.log('response',jsonData)
         setFilterRestList(jsonData?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilterRestaurantList(jsonData?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         } catch (error) {
@@ -66,14 +65,14 @@ export const CafeBody = () => {
            
         </div>
         <div className='cafe-container'>
-            {console.log(filterRestaurantList) || filterRestaurantList && (!onlineStatus ? <OfflinePage /> : filterRestaurantList.map((restaurant, index) => 
+            {!onlineStatus ? <OfflinePage /> : filterRestaurantList.map((restaurant, index) => 
             <Link key={index + restaurant?.info?.id} to={'restaurant/'+restaurant?.info?.id}>
                 {
                     restaurant?.info?.avgRating >= 4.4 ?
                     <TopRatedCard cafeData={restaurant}/> :
                     <CafeCard cafeData={restaurant} />
                 }
-            </Link>))}
+            </Link>)}
         </div>
         </>
     )
